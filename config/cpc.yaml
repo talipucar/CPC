@@ -1,0 +1,19 @@
+---
+conv_dims:                        # Architecture for Encoder with convolutional layers
+  - [  1, 512, 10, 5, 3, 1]       # i=input channel, o=output channel, k = kernel, s = stride, p = padding, d = dilation
+  - [512, 512,  8, 4, 2, 1]       # [i, o, k, s, p, d]
+  - [512, 512,  4, 2, 1, 1]       # [i, o, k, s, p, d]
+  - [512, 512,  4, 2, 1, 1]       # [i, o, k, s, p, d]
+  - [512, 512,  4, 2, 1, 1]       # [i, o, k, s, p, d]
+  - 512                           # Dimension of the output. Should be same as input dimension of MLP used for projection
+time_steps: 12                    # Number of time steps to predict into the future
+sequence_length: 20480            # Sampled audio windows of length 20480.
+downsampling_factor: 160          # 160 to get a feature vector for every 10ms of speech, also the rate of the phoneme sequence labels obtained with Kaldi.
+isBatchNorm: false                # Set True to use BatchNorm layer
+isDropout: false                  # Set True to use Dropout layer
+dropout_rate: 0.5                 # Set dropout rate if Dropout is being used
+learning_rate: 0.001              # Learning rate for training
+batch_size: 128                   # Set batch size
+epochs: 1                         # Number of epochs to use for training
+p_norm: 2                         # p-value used for normalization. p=2 for L2 norm, p=1 for L1 norm and so on.
+nth_epoch: 1                      # Compute validation loss in every nth_epoch

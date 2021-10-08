@@ -98,7 +98,7 @@ class Model:
                 Xbatch = self.process_batch(Xbatch)
                 # Initialize hidden units for GRU i.e. all zeros with shape (S, batch size, hidden unit size),
                 # S=num_layers*num_directions, i.e. 2*1 since we are using 2 layers, and GRU is set as uni-directional
-                hidden = th.zeros(2, bs, self.options["conv_dims"][-1])
+                hidden = th.zeros((2, bs, self.options["conv_dims"][-1]), device=self.device)
                 # Forward pass. Note: Outputs are equivalent to q = concat[qi, qj, dim=0], z = concat[zi, zj, dim=0]
                 encoder_samples, predictions, hidden = self.cpc(Xbatch, hidden)
                 # Compute reconstruction loss
@@ -184,7 +184,7 @@ class Model:
             self.set_mode(mode="evaluation")
             # Initialize hidden units for GRU i.e. all zeros with shape (S, batch size, hidden unit size)
             # S=num_layers*num_directions, i.e. 2*1 since we are using 2 layers, and GRU is set as uni-directional
-            hidden = th.zeros(2, self.options["batch_size"], self.options["conv_dims"][-1])
+            hidden = th.zeros((2, self.options["batch_size"], self.options["conv_dims"][-1]), device=self.device)
             # Forward pass on the model
             encoder_samples, predictions, hidden = self.cpc(Xval, hidden)
             # Compute reconstruction loss

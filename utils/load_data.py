@@ -21,7 +21,7 @@ class AudioLoader(object):
         self.train = train
         # Get the name of the dataset to be used
         dataset_name = config["dataset"]
-        # Set main results directory using database name. Exp:  processed_data/dpp19
+        # Set main results directory using database name. 
         paths = config["paths"]
         # data > dataset_name
         file_path = os.path.join(paths["data"], dataset_name.lower())
@@ -126,7 +126,7 @@ class Loader(object):
         dataset_name = config["dataset"]
         # Create dictionary to define number of classes in each dataset
         num_class = {'STL10': 10, 'CIFAR10': 10, 'MNIST': 10}
-        # Set main results directory using database name. Exp:  processed_data/dpp19
+        # Set main results directory using database name. 
         paths = config["paths"]
         # data > dataset_name
         file_path = os.path.join(paths["data"], dataset_name.lower())

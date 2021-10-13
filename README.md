@@ -50,6 +50,7 @@ every 10ms of speech, also the rate of the phoneme sequence labels obtained for 
 # Datasets
 Following datasets are supported:
 1. LibrisSpeech (train-clean-100)
+2. TODO: include a test set for LibrisSpeech
 
 
 # Environment - Installation
